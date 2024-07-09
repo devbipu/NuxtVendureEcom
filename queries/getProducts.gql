@@ -1,0 +1,22 @@
+query GetProducts {
+  products(
+    options: {
+      take: 10
+      filter: { name: { contains: "shoe" } }
+      sort: { name: ASC }
+    }
+  ) {
+    totalItems
+    items {
+      id
+      name
+      slug
+      featuredAsset {
+        preview
+        mimeType
+        width
+        height
+      }
+    }
+  }
+}

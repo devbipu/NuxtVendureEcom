@@ -57,11 +57,12 @@
           href="/"
           class="router-link-active router-link-exact-active"
           >Home</a
-        ><a href="/products" class="">Products</a
-        ><a href="/categories" class="">Categories</a
-        ><a href="/contact" class="">Contact</a
-        ><a href="/wishlist" class="lg:hidden">Wishlist</a
-        ><a href="/my-account" class="lg:hidden">My Account</a>
+        >
+        <!-- <a href="/products" class="">Products</a>
+        <a href="/categories" class="">Categories</a>
+        <a href="/contact" class="">Contact</a>
+        <a href="/wishlist" class="lg:hidden">Wishlist</a>
+        <a href="/my-account" class="lg:hidden">My Account</a> -->
       </nav>
       <div
         class="flex justify-end items-center md:w-[160px] flex-1 ml-auto gap-4 md:gap-6"
