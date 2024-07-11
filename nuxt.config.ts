@@ -12,7 +12,7 @@ export default defineNuxtConfig({
   app: {
     head: {
       htmlAttrs: { lang: "en" },
-      link: [{ rel: "icon", href: "/logo.svg", type: "image/svg+xml" }],
+      link: [{ rel: "icon", href: "/favicon.ico" }],
     },
     pageTransition: { name: "page", mode: "out-in" },
   },
@@ -34,6 +34,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       GQL_HOST: "https://shop.naviq.com/shop-api/", // overwritten by process.env.GQL_HOST
+      LOGO: '/logo.png',
       "graphql-client": {
         clients: {
           default: {
