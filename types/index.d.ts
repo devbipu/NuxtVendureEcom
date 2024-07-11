@@ -15,3 +15,9 @@ interface VendureNuxtSEOItem {
   url?: string;
   handle?: string;
 }
+
+interface Cart {
+  id: string;
+  totalPrice: number;
+  products: Product[];
+}

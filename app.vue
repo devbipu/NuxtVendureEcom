@@ -1,6 +1,13 @@
 <script setup="" lang="ts">
 const route = useRoute();
 const { siteName } = useAppConfig();
+const { isShowingCart, toggleCart } = useCart();
+const { isShowingMobileMenu, toggleMobileMenu } = useHelpers();
+
+const closeCartAndMenu = () => {
+  toggleCart(false);
+  toggleMobileMenu(false);
+};
 
 // watch(() => route.path);
 useHead({
@@ -21,9 +28,21 @@ useHead({
 <template>
   <div class="flex flex-col min-h-screen">
     <AppHeader />
+
     <NuxtLayout>
+      <Transition name="slide-from-left">
+        <MobileMenu v-if="isShowingMobileMenu" />
+      </Transition>
       <NuxtPage />
+      <Transition name="fade">
+        <div
+          v-if="isShowingCart || isShowingMobileMenu"
+          class="bg-black opacity-25 inset-0 z-40 fixed"
+          @click="closeCartAndMenu"
+        />
+      </Transition>
     </NuxtLayout>
+
     <AppFooter />
   </div>
 </template>

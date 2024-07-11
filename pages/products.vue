@@ -1,14 +1,12 @@
 <script setup lang="ts">
-//const { setProducts, updateProductList } = useProducts();
+const { setProducts, products: allProducts } = useProducts();
 const route = useRoute();
 const { storeSettings } = useAppConfig();
 // const { isQueryEmpty } = useHelpers();
 
 // const { data } = await useAsyncGql("getProducts");
-// const { data } = await fetch("/api/popular-products");
-// const allProducts = (data.value?.products?.nodes || []) as Product[];
-// setProducts(allProducts);
-
+const { data } = await useFetch("/api/popular-products");
+setProducts(data.value);
 // onMounted(() => {
 //   if (!isQueryEmpty.value) updateProductList();
 // });
@@ -29,7 +27,7 @@ useHead({
 
 <template>
   <div class="container flex items-start gap-16" v-if="allProducts?.length">
-    <Filters v-if="storeSettings.showFilters" />
+    <!-- <Filters v-if="storeSettings.showFilters" /> -->
 
     <div class="w-full">
       <div class="flex items-center justify-between w-full gap-4 mt-8 md:gap-8">
@@ -43,8 +41,7 @@ useHead({
       <ProductGrid />
     </div>
   </div>
-  <NoProductsFound class="container py-6 text-center" v-else
-    >Could not fetch products from your store. Please check your
-    configuration.</NoProductsFound
-  >
+  <NoProductsFound class="container py-6 text-center" v-else>
+    Could not fetch products from your store. Please check your configuration.
+  </NoProductsFound>
 </template>

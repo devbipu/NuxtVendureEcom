@@ -1,5 +1,5 @@
 <script setup>
-const { wooNuxtVersionInfo } = useHelpers();
+const { ventureNuxtVersionInfo } = useHelpers();
 </script>
 <template>
   <footer class="bg-white order-last">
@@ -86,9 +86,9 @@ const { wooNuxtVersionInfo } = useHelpers();
         <p class="py-4 text-xs text-center">
           <a
             href="https://github.com/devbipu/NuxtVendureEcom"
-            :title="`WooNuxt v${wooNuxtVersionInfo}`"
+            :title="`WooNuxt v${ventureNuxtVersionInfo}`"
           >
-            {{ `Nuxt Vendure v${wooNuxtVersionInfo}` }}
+            {{ `Nuxt Vendure v${ventureNuxtVersionInfo}` }}
           </a>
           - by
           <a
