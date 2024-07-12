@@ -7,7 +7,7 @@ const { data } = await useAsyncGql({
 
 const { data: popularProducts } = await useFetch("/api/popular-products");
 
-console.log(popularProducts);
+// console.log(popularProducts);
 
 useSeoMeta({
   title: `Home`,

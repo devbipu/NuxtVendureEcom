@@ -21,4 +21,6 @@ export default defineAppConfig({
     showBreadcrumbOnSingleProduct: true,
     saleBadge: "percent", // 'percent', 'onSale' or 'hidden'
   },
+
+  Vendure_Nuxt_SEO: [],
 });
