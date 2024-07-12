@@ -1,4 +1,4 @@
-import type Product from "../types";
+// import type Product from "../types";
 
 let allProducts = [] as Product[];
 
@@ -19,34 +19,34 @@ export function useProducts() {
 
   const updateProductList = async (): Promise<void> => {
     const { scrollToTop } = useHelpers();
-    const { isSortingActive, sortProducts } = useSorting();
-    const { isFiltersActive, filterProducts } = useFiltering();
-    const { isSearchActive, searchProducts } = useSearching();
+    // const { isSortingActive, sortProducts } = useSorting();
+    // const { isFiltersActive, filterProducts } = useFiltering();
+    // const { isSearchActive, searchProducts } = useSearching();
 
     // scroll to top of page
     scrollToTop();
 
     // return all products if no filters are active
-    if (
-      !isFiltersActive.value &&
-      !isSearchActive.value &&
-      !isSortingActive.value
-    ) {
-      products.value = allProducts;
-      return;
-    }
+    // if (
+    //   !isFiltersActive.value &&
+    //   !isSearchActive.value &&
+    //   !isSortingActive.value
+    // ) {
+    //   products.value = allProducts;
+    //   return;
+    // }
 
-    // otherwise, apply filter, search and sorting in that order
-    try {
-      let newProducts = [...allProducts];
-      if (isFiltersActive.value) newProducts = filterProducts(newProducts);
-      if (isSearchActive.value) newProducts = searchProducts(newProducts);
-      if (isSortingActive.value) newProducts = sortProducts(newProducts);
+    // // otherwise, apply filter, search and sorting in that order
+    // try {
+    //   let newProducts = [...allProducts];
+    //   if (isFiltersActive.value) newProducts = filterProducts(newProducts);
+    //   if (isSearchActive.value) newProducts = searchProducts(newProducts);
+    //   if (isSortingActive.value) newProducts = sortProducts(newProducts);
 
-      products.value = newProducts;
-    } catch (error) {
-      console.error(error);
-    }
+    //   products.value = newProducts;
+    // } catch (error) {
+    //   console.error(error);
+    // }
   };
 
   return {

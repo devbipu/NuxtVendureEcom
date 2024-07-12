@@ -115,6 +115,7 @@ export function useFiltering() {
    * @returns {Product[]} - An array of filtered products
    */
   function filterProducts(products: Product[]): Product[] {
+    return products;
     return products.filter((product) => {
       // Category filter
       const category = getFilter("category") || []; // ["category-slug"]
