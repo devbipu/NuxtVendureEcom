@@ -1,13 +1,14 @@
 <script setup>
 const { siteName, description, shortDescription, siteImage } = useAppConfig();
-const { data } = await useAsyncGql({
-  operation: "GetProducts",
-  variables: { limit: 5 },
-});
+const { setProducts, updateProductList, products } = useProducts();
 
 const { data: popularProducts } = await useFetch("/api/popular-products");
 
 // console.log(popularProducts);
+const { data: productList } = await useAsyncGql("GetProducts", {
+  take: 5,
+});
+setProducts(productList.value?.products?.items);
 
 useSeoMeta({
   title: `Home`,
@@ -147,7 +148,7 @@ useSeoMeta({
         }}</NuxtLink>
       </div>
       <ProductRow
-        :products="popularProducts"
+        :products="products"
         class="grid-cols-2 md:grid-cols-4 lg:grid-cols-5 mt-8"
       />
     </section>

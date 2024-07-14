@@ -1,0 +1,54 @@
+query getProduct {
+    product(slug: "laptop") {
+        id
+        createdAt
+        updatedAt
+        languageCode
+        name
+        slug
+        description
+        enabled
+        featuredAsset {
+            id
+            createdAt
+            updatedAt
+            name
+            type
+            fileSize
+            mimeType
+            width
+            height
+            source
+            preview
+            customFields
+        }
+        assets {
+            id
+            createdAt
+            updatedAt
+            name
+            type
+            fileSize
+            mimeType
+            width
+            height
+            source
+            preview
+            customFields
+        }
+        variants {
+            id
+            productId
+            createdAt
+            updatedAt
+            languageCode
+            sku
+            name
+            price
+            currencyCode
+            priceWithTax
+            stockLevel
+            customFields
+        }
+    }
+}

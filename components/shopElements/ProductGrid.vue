@@ -13,7 +13,7 @@ const productsToShow = computed(() =>
 
 <template>
   <Transition name="fade" mode="out-in">
-    <section v-if="!!products.length" class="relative w-full">
+    <section v-if="!!productsToShow.length" class="relative w-full">
       <TransitionGroup
         name="shrink"
         tag="div"
@@ -24,7 +24,6 @@ const productsToShow = computed(() =>
           v-for="(node, i) in productsToShow"
           :key="node.id || i"
           :node="node"
-          :index="i"
         />
       </TransitionGroup>
       <!-- <Pagination /> -->

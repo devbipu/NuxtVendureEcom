@@ -1,14 +1,6 @@
-type Product = {
-  id: string;
-  name: string;
-  slug: string;
-  featuredAsset?: {
-    preview: string;
-    mimeType: string;
-    width: number;
-    height: number;
-  };
-};
+type ProductBase = import("#gql").GetProductQuery["product"];
+
+type Product = ProductBase;
 
 interface VendureNuxtSEOItem {
   provider: string;
