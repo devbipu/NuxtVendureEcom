@@ -37,7 +37,9 @@ export default defineNuxtConfig({
     "@nuxt/image",
     "@nuxtjs/i18n",
   ],
-
+  image: {
+    domains: ["shop.naviq.com"],
+  },
   runtimeConfig: {
     public: {
       GQL_HOST: "https://shop.naviq.com/shop-api", // overwritten by process.env.GQL_HOST
