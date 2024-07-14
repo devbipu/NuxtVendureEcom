@@ -38,6 +38,7 @@ export default defineNuxtConfig({
     "@nuxtjs/i18n",
   ],
   image: {
+    provider: 'netlify',
     domains: ["shop.naviq.com"],
   },
   runtimeConfig: {
