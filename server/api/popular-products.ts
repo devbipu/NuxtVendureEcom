@@ -83,6 +83,88 @@ export default defineEventHandler((event) => {
             },
         },
         {
+            name: "DNK Black Shoes",
+            onSale: false,
+            slug: "dnk-black-shoesss",
+            type: "SIMPLE",
+            databaseId: 12152,
+            id: "cHJvZHVjdDoxMjE12ww",
+            averageRating: 0,
+            reviewCount: 0,
+            terms: {
+                nodes: [
+                    {
+                        taxonomyName: "product_visibility",
+                        slug: "featured",
+                    },
+                    {
+                        taxonomyName: "product_cat",
+                        slug: "men",
+                    },
+                    {
+                        taxonomyName: "pa_color",
+                        slug: "purple",
+                    },
+                    {
+                        taxonomyName: "pa_color",
+                        slug: "red",
+                    },
+                    {
+                        taxonomyName: "product_type",
+                        slug: "simple",
+                    },
+                    {
+                        taxonomyName: "product_cat",
+                        slug: "womens-shoes",
+                    },
+                ],
+            },
+            productCategories: {
+                nodes: [
+                    {
+                        databaseId: 32,
+                        slug: "men",
+                        name: "Men",
+                        count: 14,
+                    },
+                    {
+                        databaseId: 45,
+                        slug: "womens-shoes",
+                        name: "Women's Shoes",
+                        count: 1,
+                    },
+                ],
+            },
+            price: "45.00$",
+            rawPrice: "45",
+            date: "2024-06-11T16:19:41+00:00",
+            regularPrice: "45.00$",
+            rawRegularPrice: "45",
+            salePrice: null,
+            rawSalePrice: null,
+            stockStatus: "IN_STOCK",
+            stockQuantity: null,
+            lowStockAmount: null,
+            weight: null,
+            length: null,
+            width: null,
+            height: null,
+            image: {
+                sourceUrl:
+                    "https://paystone.ekopiidev.com/wp-content/uploads/2020/02/sports-shoe5.jpg",
+                cartSourceUrl:
+                    "https://paystone.ekopiidev.com/wp-content/uploads/2020/02/sports-shoe5-150x150.jpg",
+                producCardSourceUrl:
+                    "https://paystone.ekopiidev.com/wp-content/uploads/2020/02/sports-shoe5-300x300.jpg",
+                databaseId: 1325,
+                altText: "",
+                title: "sports-shoe5",
+            },
+            galleryImages: {
+                nodes: [],
+            },
+        },
+        {
             name: "DNK Blue Shoes",
             onSale: true,
             slug: "dnk-blue-shoes",

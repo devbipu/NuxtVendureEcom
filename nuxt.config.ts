@@ -40,19 +40,18 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      GQL_HOST: "https://shop.naviq.com/shop-api/", // overwritten by process.env.GQL_HOST
+      GQL_HOST: "https://shop.naviq.com/shop-api", // overwritten by process.env.GQL_HOST
       LOGO: "/logo.png",
-      "graphql-client": {
-        clients: {
-          default: {
-            host: process.env.GQL_HOST || "http://localhost:8000/graphql",
-            corsOptions: { mode: "cors", credentials: "include" },
-          },
-        },
+    },
+  },
+  "graphql-client": {
+    clients: {
+      default: {
+        host: process.env.GQL_HOST || "",
+        corsOptions: { mode: "cors", credentials: "include" },
       },
     },
   },
-
   // Multilingual support
   i18n: {
     locales: [

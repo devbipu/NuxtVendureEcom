@@ -1,15 +1,26 @@
 <script setup lang="ts">
-const { setProducts, products: allProducts } = useProducts();
+const { setProducts, updateProductList, products } = useProducts();
 const route = useRoute();
 const { storeSettings } = useAppConfig();
-// const { isQueryEmpty } = useHelpers();
 
-// const { data } = await useAsyncGql("getProducts");
-const { data } = await useFetch("/api/popular-products");
-setProducts(data.value);
+const runtimeConfig = useRuntimeConfig();
+const { productsPerPage } = useHelpers();
+
+// const { data: products } = await useFetch("/api/popular-products");
+
 // onMounted(() => {
 //   if (!isQueryEmpty.value) updateProductList();
 // });
+// console.log(typeof );
+const { data: productList } = await useAsyncGql("GetProducts", {
+  take: 50,
+});
+setProducts(productList.value?.products?.items);
+console.log(productList.value?.products?.items);
+useHead({
+  title: `Products`,
+  meta: [{ hid: "description", name: "description", content: "Products" }],
+});
 
 // watch(
 //   () => route.query,
@@ -18,17 +29,10 @@ setProducts(data.value);
 //     updateProductList();
 //   },
 // );
-
-useHead({
-  title: `Products`,
-  meta: [{ hid: "description", name: "description", content: "Products" }],
-});
 </script>
 
 <template>
-  <div class="container flex items-start gap-16" v-if="allProducts?.length">
-    <!-- <Filters v-if="storeSettings.showFilters" /> -->
-
+  <div class="container flex items-start gap-16" v-if="products?.length">
     <div class="w-full">
       <div class="flex items-center justify-between w-full gap-4 mt-8 md:gap-8">
         <ProductResultCount />

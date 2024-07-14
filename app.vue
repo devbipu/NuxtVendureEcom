@@ -33,7 +33,9 @@ useHead({
       <Transition name="slide-from-left">
         <MobileMenu v-if="isShowingMobileMenu" />
       </Transition>
+
       <NuxtPage />
+
       <Transition name="fade">
         <div
           v-if="isShowingCart || isShowingMobileMenu"
