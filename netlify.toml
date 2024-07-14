@@ -1,0 +1,5 @@
+[build]
+  command = "nuxt generate"
+
+[images]
+  remote_images = ["https://shop.naviq.com/.*"]
