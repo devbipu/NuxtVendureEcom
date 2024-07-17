@@ -5,6 +5,11 @@
     "types": ["./types", "@nuxt/image", "@nuxtjs/i18n"],
     "module": "ESNext",
     "target": "ES2022",
-    "lib": ["ES2022", "DOM"]
+    "lib": ["ES2022", "DOM"],
+    "paths": {
+      "~/*": ["./*"],
+      "@/*": ["./*"],
+      "@types/*": ["types/*"]
+    }
   }
 }
