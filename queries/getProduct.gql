@@ -1,13 +1,13 @@
-query getProduct {
-    product(slug: "laptop") {
+query getProduct($slug: String! = "laptop") {
+    product(slug: $slug) {
         id
-        createdAt
-        updatedAt
-        languageCode
         name
         slug
         description
         enabled
+        languageCode
+        createdAt
+        updatedAt
         featuredAsset {
             id
             createdAt
@@ -20,7 +20,6 @@ query getProduct {
             height
             source
             preview
-            customFields
         }
         assets {
             id
@@ -34,7 +33,6 @@ query getProduct {
             height
             source
             preview
-            customFields
         }
         variants {
             id
@@ -48,7 +46,17 @@ query getProduct {
             currencyCode
             priceWithTax
             stockLevel
-            customFields
+        }
+        collections {
+            id
+            createdAt
+            updatedAt
+            languageCode
+            name
+            slug
+            position
+            description
+            parentId
         }
     }
 }

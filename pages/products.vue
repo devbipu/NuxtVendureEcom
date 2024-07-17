@@ -16,7 +16,6 @@ const { data: productList } = await useAsyncGql("GetProducts", {
   take: 50,
 });
 setProducts(productList.value?.products?.items);
-console.log(productList.value?.products?.items);
 useHead({
   title: `Products`,
   meta: [{ hid: "description", name: "description", content: "Products" }],

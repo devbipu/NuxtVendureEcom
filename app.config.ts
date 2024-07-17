@@ -12,7 +12,7 @@ export default defineAppConfig({
   siteImage: "",
   storeSettings: {
     autoOpenCart: false,
-    showReviews: true,
+    showReviews: false,
     showFilters: true,
     showOrderByDropdown: true,
     showSKU: true,

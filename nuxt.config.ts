@@ -68,4 +68,7 @@ export default defineNuxtConfig({
     defaultLocale: "en_US",
     strategy: "no_prefix",
   },
+  alias: {
+    "@types": "/types",
+  },
 });
