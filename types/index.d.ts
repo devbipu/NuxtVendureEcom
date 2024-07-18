@@ -1,4 +1,5 @@
 type ProductBase = import("#gql").GetProductQuery["product"];
+type Collection = import("#gql").GetCollectionQuery["collection"];
 
 export type Product = ProductBase;
 
@@ -43,4 +44,16 @@ interface Variation {
   customFields?: Record<string, any>;
 }
 
-export type { Variation };
+export type { Variation, Collection };
+
+// interface Collection {
+//   id: string;
+//   createdAt: any;
+//   updatedAt: any;
+//   languageCode?: LanguageCode | null;
+//   name: string;
+//   slug: string;
+//   position: number;
+//   description: string;
+//   parentId: string;
+// }

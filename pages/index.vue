@@ -2,13 +2,18 @@
 const { siteName, description, shortDescription, siteImage } = useAppConfig();
 const { setProducts, updateProductList, products } = useProducts();
 
-const { data: popularProducts } = await useFetch("/api/popular-products");
-
 // console.log(popularProducts);
 const { data: productList } = await useAsyncGql("GetProducts", {
   take: 5,
 });
 setProducts(productList.value?.products?.items);
+
+const { data: collections } = await useAsyncGql("getCollections", {
+  options: {
+    topLevelOnly: false,
+    take: 6,
+  },
+});
 
 useSeoMeta({
   title: `Home`,
@@ -78,7 +83,7 @@ useSeoMeta({
         class="grid justify-center grid-cols-2 gap-4 mt-8 md:grid-cols-3 lg:grid-cols-6"
       >
         <CategoryCard
-          v-for="(category, i) in 6"
+          v-for="(category, i) in collections.collections.items"
           :key="i"
           class="w-full"
           :node="category"

@@ -1,0 +1,33 @@
+query getCollections($options: CollectionListOptions = null) {
+    collections(options: $options) {
+        totalItems
+        items {
+            id
+            createdAt
+            updatedAt
+            languageCode
+            name
+            slug
+            position
+            description
+            parentId
+            customFields
+            featuredAsset {
+                id
+                name
+                type
+                fileSize
+                mimeType
+                width
+                height
+                source
+                preview
+            }
+            breadcrumbs {
+                id
+                name
+                slug
+            }
+        }
+    }
+}

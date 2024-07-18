@@ -1,0 +1,14 @@
+query Collection {
+    collection(slug: null) {
+        id
+        createdAt
+        updatedAt
+        languageCode
+        name
+        slug
+        position
+        description
+        parentId
+        customFields
+    }
+}
