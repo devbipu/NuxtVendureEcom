@@ -1,31 +1,39 @@
+<script setup lang="ts">
+const { fallbackImage } = useHelpers();
+const props = defineProps({
+  node: { type: Object, required: true },
+  imageLoading: { type: String as PropType<"lazy" | "eager">, default: "lazy" },
+});
+
+const imageWidth = 220;
+const ImageHeight = Math.round(imageWidth * 1.25);
+</script>
+
 <template>
-  <a
-    href="/product-category/clothing"
-    class="relative flex justify-center overflow-hidden border border-white rounded-xl item snap-mandatory snap-x w-full"
-    data-v-ae59b753=""
-    data-v-a431ecac=""
+  <NuxtLink
+    v-if="node"
+    :to="`/product-category/${decodeURIComponent(node.slug)}`"
+    class="relative flex justify-center overflow-hidden border border-white rounded-xl item snap-mandatory snap-x"
   >
-    <img
-      onerror="this.setAttribute('data-error', 1)"
-      width="220"
-      height="275"
-      alt="clothes on hangers"
-      loading="lazy"
-      data-nuxt-img=""
+    <NuxtImg
+      :width="imageWidth"
+      :height="ImageHeight"
       class="absolute inset-0 object-cover w-full h-full"
-      title="Screenshot 2021-10-10 at 10.50.32 a.m."
-      src="https://placehold.co/220x270"
+      :src="node.featuredAsset?.preview || fallbackImage"
+      :alt="node.featuredAsset?.name || node.name"
+      :title="node.image?.title || node.name"
+      :loading="imageLoading"
+      placeholder
+      placeholder-class="blur-xl"
     />
     <div
       class="absolute inset-x-0 bottom-0 opacity-50 bg-gradient-to-t from-black to-transparent h-1/2"
-      data-v-a431ecac=""
-    ></div>
+    />
     <span
       class="relative z-10 mt-auto mb-2 text-sm font-semibold text-white capitalize md:text-base md:mb-4"
-      data-v-a431ecac=""
-      >Clothing</span
-    ></a
-  >
+      v-html="node.name"
+    />
+  </NuxtLink>
 </template>
 
 <style lang="postcss" scoped>
