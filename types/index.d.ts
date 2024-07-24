@@ -1,7 +1,7 @@
-type ProductBase = import("#gql").GetProductQuery["product"];
+import { CurrencyCode } from "#gql";
+type Product = import("#gql").GetProductQuery["product"];
 type Collection = import("#gql").GetCollectionQuery["collection"];
-
-export type Product = ProductBase;
+type Search = import("#gql").GetCollectionProductsQuery["search"];
 
 interface VendureNuxtSEOItem {
   provider: string;
@@ -15,7 +15,7 @@ interface Cart {
   products: Product[];
 }
 
-export type Asset = {
+type Asset = {
   id: string;
   createdAt: any;
   updatedAt: any;
@@ -44,8 +44,6 @@ interface Variation {
   customFields?: Record<string, any>;
 }
 
-export type { Variation, Collection };
-
 // interface Collection {
 //   id: string;
 //   createdAt: any;
@@ -57,3 +55,14 @@ export type { Variation, Collection };
 //   description: string;
 //   parentId: string;
 // }
+
+interface SearchProduct {
+  productName: string;
+  slug: string;
+  productId: string;
+  currencyCode: CurrencyCode;
+  productAsset?: { id: string; preview: string } | null;
+  priceWithTax: { min: any; max: any } | { value: any };
+}
+
+export type { SearchProduct, Variation, Collection, Search, Asset, Product };

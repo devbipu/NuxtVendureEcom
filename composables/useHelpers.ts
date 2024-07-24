@@ -8,7 +8,8 @@ export function useHelpers() {
     () => false,
   );
   const ventureNuxtVersionInfo: string = "0.0.0";
-  const productsPerPage: number = runtimeConfig.public?.PRODUCTS_PER_PAGE || 24;
+  const productsPerPage: number =
+    parseInt(runtimeConfig.public?.PRODUCTS_PER_PAGE) || 24;
   const vendure_Nuxt_SEO = runtimeConfig.public
     ?.Vendure_Nuxt_SEO as VendureNuxtSEOItem[];
   const frontEndUrl =
