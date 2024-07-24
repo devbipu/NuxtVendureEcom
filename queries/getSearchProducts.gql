@@ -1,0 +1,24 @@
+query getSearchProducts($input: SearchInput = {}) {
+  search(input: $input) {
+    totalItems
+    items {
+      productName
+      slug
+      productId
+      productAsset {
+        id
+        preview
+      }
+      priceWithTax {
+        ... on SinglePrice {
+          value
+        }
+        ... on PriceRange {
+          min
+          max
+        }
+      }
+      currencyCode
+    }
+  }
+}

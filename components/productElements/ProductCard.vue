@@ -25,7 +25,7 @@ const filterQuery = ref(route.query.filter);
 // );
 
 const mainImage = computed<string>(
-  () => props.node?.featuredAsset?.preview || "/images/placeholder.jpg",
+  () => props.node?.productAsset?.preview || "/images/placeholder.jpg",
 );
 </script>
 
@@ -36,7 +36,7 @@ const mainImage = computed<string>(
   >
     <NuxtLink
       :to="`/product/${decodeURIComponent(node.slug)}`"
-      :title="node.name"
+      :title="node.productName"
     >
       <!-- <SaleBadge :node="node" class="absolute top-2 right-2" /> -->
       <NuxtImg
@@ -44,8 +44,8 @@ const mainImage = computed<string>(
         :width="imgWidth"
         :height="imgHeight"
         :src="mainImage"
-        :alt="node.image?.altText || node.name"
-        :title="node.image?.title || node.name"
+        :alt="node.productName"
+        :title="node.productName"
         :loading="index <= 3 ? 'eager' : 'lazy'"
         placeholder
         placeholder-class="blur-xl"
@@ -55,14 +55,15 @@ const mainImage = computed<string>(
       <!-- <StarRating :rating="node.averageRating" :count="node.reviewCount" v-if="storeSettings.showReviews" /> -->
       <NuxtLink
         :to="`/product/${decodeURIComponent(node.slug)}`"
-        :title="node.name"
+        :title="node.productName"
       >
-        <h2 class="mb-2 font-light leading-tight">{{ node.name }}</h2>
+        <h2 class="mb-2 font-light leading-tight">{{ node.productName }}</h2>
       </NuxtLink>
       <ProductPrice
         class="text-sm"
-        :regular-price="node?.variants[0].price"
-        :currencyCode="node?.variants[0].currencyCode"
+        :minPrice="node?.priceWithTax?.min"
+        :maxPrice="node?.priceWithTax?.max"
+        :currencyCode="node?.currencyCode"
       />
     </div>
   </div>

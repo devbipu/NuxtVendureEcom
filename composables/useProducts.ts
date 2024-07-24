@@ -1,16 +1,20 @@
 // import type Product from "../types";
+import type { SearchProduct } from "@/types";
 
-let allProducts = [] as Product[];
+let allProducts = [] as SearchProduct[];
 
 export function useProducts() {
+  const { productsPerPage } = useHelpers();
   // Declare the state variables and the setter functions
-  const products = useState<Product[]>("products");
+  const products = useState<SearchProduct[]>("products");
+  const totalProducts = useState<number>("totalProducts");
+  const currentPage = useState<number>("currentPage");
 
   /**
    * Sets the products state variable and the allProducts variable.
    * @param {Product[]} newProducts - The new products to set.
    */
-  function setProducts(newProducts: Product[]): void {
+  function setProducts(newProducts: SearchProduct[]): void {
     if (!Array.isArray(newProducts))
       throw new Error("Products must be an array.");
     products.value = newProducts ?? [];
@@ -49,10 +53,22 @@ export function useProducts() {
     // }
   };
 
+  function setTotalProduct(data: number): void {
+    totalProducts.value = data;
+  }
+
+  function setCurrentPage(data: number): void {
+    currentPage.value = data;
+  }
+
   return {
     products,
     allProducts,
     setProducts,
+    totalProducts,
     updateProductList,
+    setTotalProduct,
+    setCurrentPage,
+    currentPage,
   };
 }

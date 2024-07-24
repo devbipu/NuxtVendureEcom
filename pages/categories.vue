@@ -5,7 +5,9 @@ const productCategories = data?.value?.collections?.items as Collection[];
 useHead({
   title: `Categories`,
   meta: [{ name: "description", content: "All product categories" }],
-  link: [{ rel: "canonical", href: "https://v3.woonuxt.com/categories" }],
+  link: [
+    { rel: "canonical", href: "https://nuxt-vendure.netlify.app/categories" },
+  ],
 });
 </script>
 <template>

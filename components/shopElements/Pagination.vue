@@ -1,7 +1,8 @@
 <script setup lang="ts">
 const route = useRoute();
+const router = useRouter();
 const { productsPerPage } = useHelpers();
-const { products } = useProducts();
+const { products, totalProducts } = useProducts();
 
 // TODO: Refactor all this logic. It's a mess.
 const currentQuery = computed(() => {
@@ -21,7 +22,7 @@ const page = ref(
   route.params.pageNumber ? parseInt(route.params.pageNumber as string) : 1,
 );
 const numberOfPages = computed<number>(() =>
-  Math.ceil(products.value.length / productsPerPage || 1),
+  Math.ceil(totalProducts.value / productsPerPage || 1),
 );
 
 const prevSrc = (pageNumber: number) => {
@@ -73,21 +74,22 @@ const numberSrc = (pageNumber: number) => {
     >
       <!-- PREV -->
       <NuxtLink
-        :to="prevSrc(page)"
+        :to="{ query: { page: 1 } }"
         class="prev"
         :disabled="page == 1"
         :class="{ 'cursor-not-allowed': page == 1 }"
         :aria-disabled="page == 1"
         aria-label="Previous"
       >
-        <Icon name="ion:chevron-back-outline" size="20" class="w-5 h-5" />
+        <!-- <Icon name="ion:chevron-back-outline" size="20" class="w-5 h-5" /> -->
+        &lt
       </NuxtLink>
 
       <!-- NUMBERS -->
       <NuxtLink
         v-for="pageNumber in numberOfPages"
         :key="pageNumber"
-        :to="numberSrc(pageNumber)"
+        :to="{ query: { page: pageNumber } }"
         :aria-current="pageNumber === page ? 'page' : undefined"
         class="page-number"
         >{{ pageNumber }}</NuxtLink
@@ -95,14 +97,15 @@ const numberSrc = (pageNumber: number) => {
 
       <!-- NEXT -->
       <NuxtLink
-        :to="nextSrc(page)"
+        :to="{ query: { page: numberOfPages } }"
         class="next"
         :disabled="page === numberOfPages"
         :class="{ 'cursor-not-allowed': page === numberOfPages }"
         :aria-disabled="page === numberOfPages"
         aria-label="Next"
       >
-        <Icon name="ion:chevron-forward-outline" size="20" class="w-5 h-5" />
+        >
+        <!-- <Icon name="ion:chevron-forward-outline" size="20" class="w-5 h-5" /> -->
       </NuxtLink>
     </nav>
   </div>

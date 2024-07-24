@@ -2,11 +2,13 @@
 const { siteName, description, shortDescription, siteImage } = useAppConfig();
 const { setProducts, updateProductList, products } = useProducts();
 
-// console.log(popularProducts);
-const { data: productList } = await useAsyncGql("GetProducts", {
-  take: 5,
+const { data: productList } = await useAsyncGql("getSearchProducts", {
+  input: {
+    take: 5,
+    groupByProduct: true,
+  },
 });
-setProducts(productList.value?.products?.items);
+setProducts(productList.value?.search?.items);
 
 const { data: collections } = await useAsyncGql("getCollections", {
   options: {
